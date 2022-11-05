@@ -42,8 +42,8 @@ export default function AddPlacePopup(props) {
                     className="popup__input popup__input_form-name popup__input_form-error"
                     placeholder="Название"
                     name="name"
-                    minlength="2"
-                    maxlength="30"
+                    minLength="2"
+                    maxLength="30"
                     value={name}
                     onChange={handleNameChange}
                     required />

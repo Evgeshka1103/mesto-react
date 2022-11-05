@@ -104,17 +104,21 @@ export default function App() {
             .catch(err => console.log(`Ошибка: ${err}`))
     }
 
-    function handleEsc(evt) {
-        if (evt.key === 'Escape') {
-            closeAllPopups()
-        }
-    }
+    const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isPopupWithConfirmationOpen
+
     useEffect(() => {
-        document.addEventListener('keydown', handleEsc);
-        return () => {
-            document.removeEventListener('keydown', handleEsc);
-        };
-    });
+        function handleEsc(evt) {
+            if (evt.key === 'Escape') {
+                closeAllPopups();
+            }
+        }
+        if (isOpen) {
+            document.addEventListener('keydown', handleEsc);
+            return () => {
+                document.removeEventListener('keydown', handleEsc);
+            }
+        }
+    }, [isOpen])
 
     useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -145,19 +149,19 @@ export default function App() {
                 <Footer />
 
                 <EditAvatarPopup
-                    isOpen={isEditAvatarPopupOpen && 'popup__opened'}
+                    isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
                     onUpdateAvatar={handleUpdateAvatar}
                 />
 
                 <EditProfilePopup
-                    isOpen={isEditProfilePopupOpen && 'popup__opened'}
+                    isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
                     onUpdateUser={handleUpdateUser}
                 />
 
                 <AddPlacePopup
-                    isOpen={isAddPlacePopupOpen && 'popup__opened'}
+                    isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
                     onAddPlace={handleAddPlaceSubmit}
                 />
@@ -165,13 +169,13 @@ export default function App() {
 
 
                 <ImagePopup
-                    isOpen={isImagePopupOpen && 'popup__opened'}
+                    isOpen={isImagePopupOpen}
                     onClose={closeAllPopups}
                     card={selectedCard}
                 />
 
                 <PopupWithConfirmation
-                    isOpen={isPopupWithConfirmationOpen && 'popup__opened'}
+                    isOpen={isPopupWithConfirmationOpen}
                     onClose={closeAllPopups}
                     onSubmitDelete={handleCardDelete}
                     card={selectedCard}

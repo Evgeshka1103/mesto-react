@@ -46,8 +46,8 @@ export default function EditProfilePopup(props) {
                     placeholder="Имя"
                     value={name}
                     name="name"
-                    minlength="2"
-                    maxlength="40"
+                    minLength="2"
+                    maxLength="40"
                     onChange={handleNameChange}
                     required />
 
@@ -65,8 +65,8 @@ export default function EditProfilePopup(props) {
                     placeholder="О себе"
                     value={description}
                     name="about"
-                    minlength="2"
-                    maxlength="200"
+                    minLength="2"
+                    maxLength="200"
                     onChange={handleDescriptionChange}
                     required />
 

@@ -28,7 +28,8 @@ export default function Main(props) {
 
             <section className="elements">
                 {props.cards.map((data) => {
-                    return <Card
+                    return(
+                        <Card
                         key={data._id}
                         card={data}
                         id={currentUser._id}
@@ -36,6 +37,7 @@ export default function Main(props) {
                         onLikeCard={props.onLikeCard}
                         onDeleteCard={props.onDeleteCard}
                     />
+                    );
                 })
                 }
             </section>

@@ -3,7 +3,8 @@ import React from 'react';
 export default function PopupWithForm(props) {
 
     return (
-        <div className={`popup popup_${props.name} ${props.isOpen}`}>
+
+        <div className={`popup popup_${props.name} ${props.isOpen && "popup_opened"}`}>
             <div className="popup__container">
                 <button
                     className="popup__button-close"
@@ -13,12 +14,11 @@ export default function PopupWithForm(props) {
                 <h3 className="popup__edit-text">{props.title}</h3>
                 <form
                     className="popup__form"
-                    name={`${props.name}-form`}
-                    onSubmit={props.onSubmit}
-                    noValidate>
+                    name={props.name}
+                    onSubmit={props.onSubmit}>
 
                     {props.children}
-                    
+
                     <button
                         className="popup__button"
                         type="submit" >{props.button}</button>
