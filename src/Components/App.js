@@ -70,7 +70,7 @@ export default function App() {
             .then(userData => setCurrentUser(userData))
             .then(() => closeAllPopups())
             .catch(err => console.log(`Ошибка: ${err}`))
-        }
+    }
 
 
     function handleAddPlaceSubmit(data) {
@@ -109,15 +109,12 @@ export default function App() {
             closeAllPopups()
         }
     }
-
     useEffect(() => {
         document.addEventListener('keydown', handleEsc);
-
         return () => {
             document.removeEventListener('keydown', handleEsc);
         };
     });
-
 
     useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()])
