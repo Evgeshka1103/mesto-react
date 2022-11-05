@@ -1,0 +1,19 @@
+.elements__like {
+    min-width: 22px;
+    height: 19px;
+    background-image: url(../../../images/Vectorlike.svg);
+    color: black;
+    cursor: pointer;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 22px 21px 3px 0;
+    padding: 0;
+    flex-shrink: 0;
+    border: none;
+}
+
+.elements__like:hover{
+  opacity: 0.5;
+}
+

@@ -1,0 +1,18 @@
+.elements__card {
+    display: grid;
+    background-color: white;
+    max-width: 282px;
+    margin: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.elements__card:hover{
+opacity: 0.5;
+}
+
+@media screen and (max-width: 900px) {
+    .elements__card{
+        margin: 0;
+    }
+}

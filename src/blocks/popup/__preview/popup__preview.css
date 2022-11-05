@@ -1,0 +1,10 @@
+.popup__preview{
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: column;
+    max-width: 75vw;
+    max-height: 75vh;
+    background-color: transparent;
+    
+}
