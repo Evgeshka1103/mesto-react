@@ -16,7 +16,7 @@ class Api {
 
    _request(url, options) {
       return fetch(url, options).then(this.#onResponse)
-    }
+   }
 
    //Загрузка информации о пользователе с сервера
    getUserInfo() {
@@ -24,7 +24,7 @@ class Api {
          method: 'GET',
          headers: this._headers
       })
-         //.then(this.#onResponse)
+
    }
 
    //Загрузка карточек с сервера
@@ -33,7 +33,7 @@ class Api {
          method: 'GET',
          headers: this._headers
       })
-         //.then(this.#onResponse)
+
    }
 
    //Редактирование профиля
@@ -46,7 +46,7 @@ class Api {
             about: about
          })
       })
-         //.then(this.#onResponse)
+
    }
 
    //Добавление новой карточки
@@ -59,7 +59,7 @@ class Api {
             link: link
          })
       })
-         //.then(this.#onResponse)
+
    }
 
    //Отображение количества лайков карточки
@@ -68,7 +68,7 @@ class Api {
          method: 'PUT',
          headers: this._headers
       })
-         //.then(this.#onResponse)
+
    }
 
    //Удаление карточки
@@ -77,7 +77,7 @@ class Api {
          method: 'DELETE',
          headers: this._headers
       })
-         //.then(this.#onResponse)
+
    }
 
    //Постановка и снятие лайка
@@ -86,7 +86,7 @@ class Api {
          method: 'DELETE',
          headers: this._headers
       })
-         //.then(this.#onResponse)
+
    }
 
    changeLikeStatus(id, isLiked) {
@@ -102,7 +102,7 @@ class Api {
             avatar: link
          })
       })
-         //.then(this.#onResponse)
+
    }
 }
 

@@ -9,8 +9,10 @@ export default function Card(props) {
         props.onClickCard(props.card);
     }
 
-    function handleDeleteClick() {
-        props.onDeleteCard(props.card);
+    function handleDeleteClick() { 
+
+        props.onCardDelete(props.card); 
+
     }
 
     function handleLikeClick() {
@@ -18,7 +20,7 @@ export default function Card(props) {
     }
 
 return (
-        <div className="elements__card" onClick={handleCardClick}>
+        <div className="elements__card">
             <img className="elements__mask-group" src={props.card.link} alt={props.card.name} onClick={handleCardClick} />
             <div className="elements__text">
                 <h2 className="elements__sight">{props.card.name}</h2>

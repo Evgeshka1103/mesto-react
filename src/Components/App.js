@@ -42,11 +42,13 @@ export default function App() {
         setIsImagePopupOpen(true);
     };
 
-    function handleDeleteClick(selectedCard) {
-        setSelectedCard(selectedCard);
-        setIsPopupWithConfirmationOpen(true);
-    };
+    function handleConfirmationDeleteClick(selectedCard) {
 
+        setSelectedCard(selectedCard);
+
+        setIsPopupWithConfirmationOpen(true);
+
+    };
     function closeAllPopups() {
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
@@ -104,7 +106,7 @@ export default function App() {
             .catch(err => console.log(`Ошибка: ${err}`))
     }
 
-    const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isPopupWithConfirmationOpen
+    const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen
 
     useEffect(() => {
         function handleEsc(evt) {
@@ -140,7 +142,7 @@ export default function App() {
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
-                    onDeleteCard={handleDeleteClick}
+                    onCardDelete={handleConfirmationDeleteClick}
                     onClickCard={handleCardClick}
                     onLikeCard={handleCardLike}
                     cards={cards}
@@ -177,7 +179,7 @@ export default function App() {
                 <PopupWithConfirmation
                     isOpen={isPopupWithConfirmationOpen}
                     onClose={closeAllPopups}
-                    onSubmitDelete={handleCardDelete}
+                    onDeleteCard={handleCardDelete}
                     card={selectedCard}
                 />
 

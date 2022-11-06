@@ -1,7 +1,7 @@
 export default function ImagePopup(props) {
 
     return (
-        <div className={`popup popup_photo-template popup_shadow ${props.isOpen}`}>
+        <div className={`popup popup_photo-template popup_shadow ${props.isOpen && "popup_opened"}`}>
 
             <div className="popup__preview">
 
