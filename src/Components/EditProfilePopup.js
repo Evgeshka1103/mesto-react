@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import PopupWithForm from "./PopupWithForm";
-import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { CurrentUserContext } from "../Contexts/CurrentUserContext";
 
 export default function EditProfilePopup(props) {
     const [name, setName] = useState('');
@@ -20,7 +20,7 @@ export default function EditProfilePopup(props) {
 
         props.onUpdateUser({
             name: name,
-            about: description
+            about: description,
         });
     }
 

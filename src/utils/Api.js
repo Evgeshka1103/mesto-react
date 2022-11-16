@@ -14,8 +14,8 @@ class Api {
       return Promise.reject({ message: "Ошибка" }, response);
    }
 
-   _request(url, options) {
-      return fetch(url, options).then(this.#onResponse)
+   _request(baseUrl, options) {
+      return fetch(baseUrl, options).then(this.#onResponse)
    }
 
    //Загрузка информации о пользователе с сервера
@@ -37,26 +37,26 @@ class Api {
    }
 
    //Редактирование профиля
-   patchUserInfoData(name, about) {
+   patchUserInfoData(data) {
       return this._request(`${this._baseUrl}/users/me`, {
          method: 'PATCH',
          headers: this._headers,
          body: JSON.stringify({
-            name: name,
-            about: about
+            name: data.name,
+            about: data.about
          })
       })
 
    }
 
    //Добавление новой карточки
-   postUserCardData(name, link) {
+   postUserCardData(data) {
       return this._request(`${this._baseUrl}/cards`, {
          method: 'POST',
          headers: this._headers,
          body: JSON.stringify({
-            name: name,
-            link: link
+            name: data.name,
+            link: data.link
          })
       })
 
@@ -94,12 +94,12 @@ class Api {
    }
 
    //Обновление аватара пользователя
-   patchUserAvatarData(link) {
+   patchUserAvatarData(data) {
       return this._request(`${this._baseUrl}/users/me/avatar`, {
          method: 'PATCH',
          headers: this._headers,
          body: JSON.stringify({
-            avatar: link
+            avatar: data.avatar
          })
       })
 

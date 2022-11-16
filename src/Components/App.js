@@ -11,7 +11,7 @@ import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
 import PopupWithConfirmation from './PopupWithConfirmation';
 
-import { CurrentUserContext } from '../Context/CurrentUserContext';
+import { CurrentUserContext } from '../Contexts/CurrentUserContext';
 
 export default function App() {
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -63,7 +63,7 @@ export default function App() {
         api.patchUserInfoData(data)
             .then(userData => setCurrentUser(userData))
             .then(() => closeAllPopups())
-            .catch(err => console.log(`Ошибка: ${err}`))
+            .catch(err => console.log(`Ошибка: ${err}`));
     }
 
 
@@ -71,39 +71,35 @@ export default function App() {
         api.patchUserAvatarData(data)
             .then(userData => setCurrentUser(userData))
             .then(() => closeAllPopups())
-            .catch(err => console.log(`Ошибка: ${err}`))
+            .catch(err => console.log(`Ошибка: ${err}`));
     }
 
 
     function handleAddPlaceSubmit(data) {
+
         api.postUserCardData(data)
-            .then((newCard) => {
-                setCards([newCard, ...cards]);
-                closeAllPopups();
-            })
-            .catch((err) => {
-                console.log(`Ошибка: ${err}`);
-            })
-    };
+            .then(newCard => setCards([newCard, ...cards]))
+            .then(() => closeAllPopups())
+            .catch(err => console.log(`Ошибка: ${err}`));
+    }
+
 
     function handleCardLike(card) {
-        const isLiked = card.likes.some(element => element._id === currentUser._id);
+        const isLiked = card.likes.some(i => i._id === currentUser._id);
         api.changeLikeStatus(card._id, isLiked)
             .then((newCard) => {
-                setCards((state) => state.map((element) => element._id === card._id ? newCard : element));
+                setCards((state) => state.map((i) => i._id === card._id ? newCard : i));
             })
-            .catch((err) => {
-                console.log(`Ошибка: ${err}`);
-            })
+            .catch(err => console.log(`Ошибка: ${err}`));
     };
 
     function handleCardDelete(card) {
         api.deleteCard(card._id)
             .then(() => {
-                setCards(state => state.filter((element) => element._id !== card._id));
+                setCards(state => state.filter((i) => i._id !== card._id));
             })
             .then(() => closeAllPopups())
-            .catch(err => console.log(`Ошибка: ${err}`))
+            .catch(err => console.log(`Ошибка: ${err}`));
     }
 
     const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen
@@ -128,7 +124,7 @@ export default function App() {
                 setCurrentUser(userData);
                 setCards(cardsData);
             })
-            .catch(err => console.log(`Ошибка: ${err}`))
+            .catch(err => console.log(`Ошибка: ${err}`));
     }, []);
 
     return (
