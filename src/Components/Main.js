@@ -35,7 +35,7 @@ export default function Main(props) {
                         id={currentUser._id}
                         onClickCard={props.onClickCard}
                         onLikeCard={props.onLikeCard}
-                        onDeleteCard={props.onDeleteCard}
+                       onCardDelete={props.onCardDelete}
                     />
                     );
                 })

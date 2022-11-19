@@ -43,12 +43,10 @@ export default function App() {
     };
 
     function handleConfirmationDeleteClick(selectedCard) {
-
         setSelectedCard(selectedCard);
-
         setIsPopupWithConfirmationOpen(true);
-
     };
+
     function closeAllPopups() {
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
@@ -66,14 +64,12 @@ export default function App() {
             .catch(err => console.log(`Ошибка: ${err}`));
     }
 
-
     function handleUpdateAvatar(data) {
         api.patchUserAvatarData(data)
             .then(userData => setCurrentUser(userData))
             .then(() => closeAllPopups())
             .catch(err => console.log(`Ошибка: ${err}`));
     }
-
 
     function handleAddPlaceSubmit(data) {
 
@@ -82,7 +78,6 @@ export default function App() {
             .then(() => closeAllPopups())
             .catch(err => console.log(`Ошибка: ${err}`));
     }
-
 
     function handleCardLike(card) {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -93,7 +88,7 @@ export default function App() {
             .catch(err => console.log(`Ошибка: ${err}`));
     };
 
-    function handleCardDelete(card) {
+    function handleDeletecard(card) {
         api.deleteCard(card._id)
             .then(() => {
                 setCards(state => state.filter((i) => i._id !== card._id));
@@ -175,7 +170,7 @@ export default function App() {
                 <PopupWithConfirmation
                     isOpen={isPopupWithConfirmationOpen}
                     onClose={closeAllPopups}
-                    onDeleteCard={handleCardDelete}
+                    onSubmitDeleteCard={handleDeletecard}
                     card={selectedCard}
                 />
 

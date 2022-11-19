@@ -2,10 +2,10 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function PopupWithConfirmation(props) {
-    function handleCardDelete(evt) {
+    function handleSubmitDelete(evt) {
         evt.preventDefault();
         
-        props.onDeleteCard(props.card);
+        props.onSubmitDeleteCard(props.card);
     };
 
     return (
@@ -15,7 +15,7 @@ export default function PopupWithConfirmation(props) {
             name="confirmation"
             title="Вы уверены?"
             button="Да"
-            onSubmit={handleCardDelete}
+            onSubmit={handleSubmitDelete}
         />
     )
 }
