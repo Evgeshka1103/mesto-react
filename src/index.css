@@ -6,6 +6,7 @@
 @import url(./blocks/elements/elements.css);
 @import url(./blocks/elements/__delete/elements__delete.css);
 @import url(./blocks/elements/__delete/_active/elements__delete_active.css);
+@import url(./blocks/elements/__delete/_hidden/elements__delete_hidden.css);
 @import url(./blocks/elements/__card/elements__card.css);
 @import url(./blocks/elements/__likes-number/elements__likes-number.css);
 @import url(./blocks/elements/__number-like/elements__number-like.css);
